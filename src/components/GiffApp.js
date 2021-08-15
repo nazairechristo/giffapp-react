@@ -24,9 +24,12 @@ const GiffApp = () => {
 
     const fetchGifs = async (search) => {
         const URL = "https://api.giphy.com/v1/gifs/search?api_key=91aYTHY2EHvBxrtpAky1ZbrSa5NmfG0f&q=" + search + "&limit=25&offset=0&rating=g&lang";
-        const data = axios.get(URL).then((res) => res.data);
+        const data = axios.get(URL).then((res) => {
 
-        setLoading(true);
+            setLoading(true);
+            return res.data
+        });
+
         return data;
     
     }
@@ -34,15 +37,15 @@ const GiffApp = () => {
 
     const fetchTrending = async () => {
        await axios
-             .get("https://api.giphy.com/v1/gifs/trending?api_key=91aYTHY2EHvBxrtpAky1ZbrSa5NmfG0f&limit=25&rating=g")
+             .get("https://api.giphy.com/v1/gifs/trending?api_key=91aYTHY2EHvBxrtpAky1ZbrSa5NmfG0f&limit=24&rating=g")
              .then((res) => {
+                 setLoading(true)
                  return setData(res.data.data);
              });
     }
 
     useEffect(()=> {
         fetchTrending();
-        setLoading(true);
     }, []);
 
     const loveQuery = async (e) => {
@@ -79,7 +82,7 @@ const GiffApp = () => {
                    {data.map((gif) => (
                        <Gifs title={gif.title} key={gif.id} img={gif.images.original.url}/>
                    ))}
-                </ul> : <div class="loader"></div>}
+                </ul> : <div className="loader"></div>}
             </div>
         </div>
     )

@@ -88,23 +88,40 @@
             
             
             li{
+                position: relative;
                 padding: 5px;
                 margin: 7px;
+                width: 335px;
                 border-radius: 10px;
                 background: linear-gradient(110deg, red,orange,yellow, blue);
                 
                 .gif-img{
+                    position: relative;
+                    button{
+                        position: absolute;
+                        background: url('https://img.icons8.com/pastel-glyph/35/ffffff/download.png') center/cover;
+                        right: 15px;
+                        bottom: 15px;
+                        border-radius: 5px;
+                        height: 38px;
+                        width: 38px;
+                        background-color: rgba(0, 0, 0, 0.329);
+                    }
+                    
                     img{
                         width: 325px;
                         height: 390px;
                         border-radius: 10px;
                     }
                 }
-                span{
-                    background-color: white;
+                .text{
+                    background-color: rgb(20, 20, 20);
+                    color: white;
                     padding: 2px;
                     margin: 4px;
                     border-radius: 8px;
+
+                    
                 }
             }
         }
